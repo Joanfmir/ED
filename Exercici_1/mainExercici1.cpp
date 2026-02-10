@@ -3,6 +3,18 @@ using namespace std;
 
 
 
+int menu(){
+    string arr_options[] = {"Sortir", "Benvinguda", "Redefinir el nom" };
+    int opcio = 0;
+
+    for(int i = 0; i < 3; i++){
+        cout << i + 1 << " - " << arr_options[i] << endl;
+    }
+    cin >> opcio;
+
+    return opcio;
+}
+
 
 int main(){
     string nom;
@@ -10,17 +22,12 @@ int main(){
     cin >> nom;
     cout << "Hola " << nom << "!" << endl;
 
+    int opcio;
 
-
-    string arr_options[] = {"Sortir", "Benvinguda", "Redefinir el nom" };
-    int opcio = 0;
 
     
     do{
-        for(int i = 0; i < 3; i++){
-            cout << i + 1 << " - " << arr_options[i] << endl;
-        }
-        cin >> opcio;
+        opcio = menu();
 
         switch (opcio)
         {
@@ -40,9 +47,9 @@ int main(){
 
         }
 
-    }while(opcio!= 1);
+    }while(opcio != 1);
     
-    cout <<"Fins aviat " << nom << "!" << endl;
+   return 0;
 
 }
 
