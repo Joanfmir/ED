@@ -8,27 +8,33 @@ void informarEstudiant(int &contador){
     string nom;
     int anyNaixement;
     int numAss;
-    int edat;
 
     cout << "Quin es el teu nom? " << endl;
     cin >> nom;
 
-    cout << "Quin any vas neixer? " << endl;
-    cin >> anyNaixement;
-
     cout << "Quantes assignatures fas?" << endl;
     cin >> numAss;
 
+    while(true){
+        cout << "Quin any vas neixer? " << endl;
+        cin >> anyNaixement;
 
-    Estudiant e(nom, anyNaixement, numAss);
-    e.print();
-    edat = e.getEdat();
-    cout << "Edat del nou estudiant: " << edat << endl;
+        try{
+            Estudiant e(nom, anyNaixement, numAss); 
+            e.print();
+            int edat = e.getEdat();
+            cout << "Edat del nou estudiant: " << edat << endl;
 
-
-    contador++;
-
+            contador++;
+            break; 
+        }
+        catch(const std::invalid_argument& ex){
+            cout << "Error: " << endl;
+            cout << "Introdueix un any valid (1.." << ANY_ACTUAL << ")." << endl;
+        }
+    }
 }
+
 
 int menu(){
     int opcio;
@@ -56,14 +62,10 @@ int main(){
 
             case 2:
                 cout << "Estudiant: " <<  contadorEstudiants << endl;
-                informarEstudiant(contadorEstudiants);
-                
+                informarEstudiant(contadorEstudiants); 
                 break;
                 
-
             default: cout << "Opció no valida"; break;
-
-
 
         }
     }while(opcio!= 1);
